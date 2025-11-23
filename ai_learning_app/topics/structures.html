@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KR Structures - AI Learning Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <h1>4. Knowledge Representation Structures</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>A. Weak Slot-and-Filler Structures</h2>
+            <p>Organize knowledge as objects with attributes (slots) and values (fillers).</p>
+
+            <h3>1. Semantic Networks</h3>
+            <p>A graph where nodes are concepts and arcs are relationships.</p>
+            <ul>
+                <li><strong>ISA:</strong> Subclass relationship (Bird ISA Animal).</li>
+                <li><strong>INSTANCE:</strong> Specific object (Tweety INSTANCE Bird).</li>
+                <li><strong>HASPART:</strong> Composition (Bird HASPART Wings).</li>
+            </ul>
+
+            <h3>2. Frames</h3>
+            <p>Data structures representing a stereotypical situation. Like a class in OOP.</p>
+            <pre>
+Frame: Bird
+  ISA: Animal
+  Wings: 2
+  Legs: 2
+  Fly: True
+            </pre>
+        </section>
+
+        <section class="content-section">
+            <h2>B. Strong Slot-and-Filler Structures</h2>
+            <p>Specific to representing events and natural language meanings.</p>
+
+            <h3>1. Conceptual Dependency (CD)</h3>
+            <p>Represents the meaning of sentences independent of the specific language. Uses primitive actions (ATRANS, PTRANS, MTRANS, etc.).</p>
+
+            <h3>2. Scripts</h3>
+            <p>Describes a stereotyped sequence of events in a particular context (e.g., A Restaurant Script).</p>
+            <ul>
+                <li><strong>Entry Conditions:</strong> Hungry, have money.</li>
+                <li><strong>Scenes:</strong> Entering, Ordering, Eating, Paying.</li>
+                <li><strong>Results:</strong> Not hungry, less money.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Learning Hub</p>
+    </footer>
+</body>
+</html>

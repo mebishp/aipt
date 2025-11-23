@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning in AI - AI Learning Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <h1>6. Learning in AI</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>A. Types of Learning</h2>
+            <p>Learning improves performance with experience.</p>
+            
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <h4>Supervised Learning</h4>
+                    <p>Learning with a teacher. Input-output pairs are provided (Labeled data).</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Unsupervised Learning</h4>
+                    <p>Finding patterns in data without labels (Clustering).</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Reinforcement Learning</h4>
+                    <p>Learning through rewards and punishments by interacting with an environment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>B. Specific Mechanisms</h2>
+            <ul>
+                <li><strong>Rote Learning:</strong> Memorization (Caching).</li>
+                <li><strong>Induction:</strong> Learning general rules from examples (Decision Trees).</li>
+                <li><strong>Explanation-Based Learning (EBL):</strong> Learning from a single example by analyzing <em>why</em> it works using domain theory.</li>
+                <li><strong>Analogy:</strong> Solving new problems by adapting solutions from similar old problems.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>C. Decision Trees</h2>
+            <p>A supervised learning method for classification. A tree where each internal node tests an attribute, branches represent outcomes, and leaves represent class labels.</p>
+            <ul>
+                <li><strong>ID3 Algorithm:</strong> Builds trees using information gain (entropy reduction).</li>
+                <li><strong>C4.5 & CART:</strong> More advanced variants.</li>
+                <li><strong>Advantage:</strong> Interpretable, no scaling needed.</li>
+                <li><strong>Disadvantage:</strong> Prone to overfitting.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>D. Explanation-Based Learning (EBL)</h2>
+            <p>Learning from a <strong>single example</strong> by analyzing why it works. Uses domain theory to extract general principles.</p>
+            <ul>
+                <li><strong>Inputs:</strong> Training example, goal concept, domain theory, operational criteria.</li>
+                <li><strong>Process:</strong> Explain → Generalize → Extract reusable knowledge.</li>
+                <li><em>Example:</em> Learning how to play chess from analyzing one grand master's game.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>E. Reinforcement Learning (RL)</h2>
+            <p>The agent learns by interacting with an environment and receiving rewards or penalties.</p>
+            <ul>
+                <li><strong>Agent:</strong> Perceives state, takes action.</li>
+                <li><strong>Environment:</strong> Responds with new state and reward.</li>
+                <li><strong>Goal:</strong> Maximize cumulative reward (return).</li>
+                <li><strong>Key Trade-off:</strong> Exploration (try new actions) vs. Exploitation (use best-known actions).</li>
+            </ul>
+            <h3>Algorithms:</h3>
+            <ul>
+                <li><strong>Q-Learning:</strong> Learn value of actions in each state.</li>
+                <li><strong>Policy Gradient:</strong> Directly optimize the decision policy.</li>
+                <li><strong>Actor-Critic:</strong> Combine both approaches.</li>
+            </ul>
+            <p><em>Applications:</em> Game AI (AlphaGo), Robot control, Autonomous vehicles.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>F. Neural Networks & Deep Learning</h2>
+            <h3>Artificial Neural Networks (ANN)</h3>
+            <p>Inspired by the human brain. Consists of layers of artificial neurons connected by weighted edges.</p>
+            <ul>
+                <li><strong>Perceptron:</strong> Basic unit that takes weighted inputs and produces binary output.</li>
+                <li><strong>Multi-Layer Perceptron (MLP):</strong> Multiple layers → non-linear decision boundaries.</li>
+                <li><strong>Convolutional Neural Networks (CNN):</strong> Specialized for image processing.</li>
+                <li><strong>Recurrent Neural Networks (RNN):</strong> For sequential data (text, time series).</li>
+            </ul>
+
+            <h3>Training Process:</h3>
+            <ul>
+                <li><strong>Forward Pass:</strong> Input → Layers → Output.</li>
+                <li><strong>Loss Calculation:</strong> Compare output to target.</li>
+                <li><strong>Backpropagation:</strong> Compute gradients and update weights.</li>
+                <li><strong>Repeat:</strong> Many iterations (epochs) until convergence.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>G. Genetic Algorithms (GA)</h2>
+            <p>Inspired by evolution. Evolves a population of solutions toward optimal ones using natural selection principles.</p>
+            <ul>
+                <li><strong>Chromosome:</strong> Representation of a solution (e.g., bit string).</li>
+                <li><strong>Population:</strong> Set of candidate solutions.</li>
+                <li><strong>Fitness Function:</strong> Evaluates how good each solution is.</li>
+            </ul>
+
+            <h3>Genetic Operators:</h3>
+            <ul>
+                <li><strong>Selection:</strong> Choose best solutions to reproduce.</li>
+                <li><strong>Crossover (Recombination):</strong> Mix two solutions to create offspring.</li>
+                <li><strong>Mutation:</strong> Random changes to introduce diversity.</li>
+            </ul>
+
+            <h3>Advantages:</h3>
+            <ul>
+                <li>Works on complex optimization problems.</li>
+                <li>No derivative information needed.</li>
+                <li>Parallelizable.</li>
+            </ul>
+
+            <p><em>Applications:</em> Circuit design, game strategy optimization, robot locomotion.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>H. Comparison of Learning Approaches</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Approach</th>
+                        <th>Feedback Type</th>
+                        <th>Use Case</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Supervised</td>
+                        <td>Labeled data</td>
+                        <td>Classification, Regression</td>
+                        <td>Email spam detection</td>
+                    </tr>
+                    <tr>
+                        <td>Unsupervised</td>
+                        <td>No labels</td>
+                        <td>Clustering, Anomaly detection</td>
+                        <td>Customer segmentation</td>
+                    </tr>
+                    <tr>
+                        <td>Reinforcement</td>
+                        <td>Rewards/Penalties</td>
+                        <td>Control, Optimization</td>
+                        <td>Game AI, Robot control</td>
+                    </tr>
+                    <tr>
+                        <td>Semi-Supervised</td>
+                        <td>Mix of labeled & unlabeled</td>
+                        <td>When labels are expensive</td>
+                        <td>Medical image analysis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Learning Hub</p>
+    </footer>
+</body>
+</html>

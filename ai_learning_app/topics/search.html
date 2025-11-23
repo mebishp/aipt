@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Techniques - AI Learning Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <h1>2. Problem Solving & Search Techniques</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>A. State Space Search</h2>
+            <p>Problem solving in AI is often modeled as searching through a <strong>State Space</strong>. A state space is a graph where nodes are states and edges are actions.</p>
+            <ul>
+                <li><strong>Initial State:</strong> Where we start.</li>
+                <li><strong>Goal State:</strong> Where we want to end up.</li>
+                <li><strong>Path Cost:</strong> The cost associated with the path.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>B. Problem Characteristics</h2>
+            <p>Before choosing a search algorithm, we must analyze the problem type:</p>
+            <ol>
+                <li><strong>Is the problem decomposable?</strong> Can it be broken down into smaller sub-problems? (e.g., Integration vs. 8-Puzzle)</li>
+                <li><strong>Can solution steps be ignored or undone?</strong>
+                    <ul>
+                        <li><em>Ignorable:</em> Theorem Proving (just add more steps).</li>
+                        <li><em>Recoverable:</em> 8-Puzzle (can backtrack).</li>
+                        <li><em>Irrecoverable:</em> Chess (cannot undo a move).</li>
+                    </ul>
+                </li>
+                <li><strong>Is the universe predictable?</strong> (Certain vs. Uncertain outcome)</li>
+                <li><strong>Is a good solution absolute or relative?</strong> (Any path vs. Best path)</li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2>C. Uninformed Search (Blind Search)</h2>
+            <p>These algorithms have no additional information about the goal other than how to traverse the graph.</p>
+
+            <h3>1. Breadth-First Search (BFS)</h3>
+            <p>Explores the neighbor nodes first, before moving to the next level neighbors. It uses a <strong>Queue (FIFO)</strong>.</p>
+            <ul>
+                <li><strong>Complete:</strong> Yes.</li>
+                <li><strong>Optimal:</strong> Yes (if step costs are equal).</li>
+                <li><strong>Complexity:</strong> High memory usage $O(b^d)$.</li>
+            </ul>
+
+            <h3>2. Depth-First Search (DFS)</h3>
+            <p>Explores as far as possible along each branch before backtracking. It uses a <strong>Stack (LIFO)</strong>.</p>
+            <ul>
+                <li><strong>Complete:</strong> No (can get stuck in loops).</li>
+                <li><strong>Optimal:</strong> No.</li>
+                <li><strong>Complexity:</strong> Low memory usage $O(b \cdot m)$.</li>
+            </ul>
+
+            <div class="viz-container">
+                <h3>Interactive Search Visualization</h3>
+                <p>Select an algorithm and click "Start" to see how it traverses the graph.</p>
+                <div class="controls">
+                    <button id="btn-bfs">Run BFS</button>
+                    <button id="btn-dfs">Run DFS</button>
+                    <button id="btn-reset-graph">Reset</button>
+                </div>
+                <canvas id="graph-canvas" width="600" height="400"></canvas>
+                <div id="search-log" class="log-panel">Log output...</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>C. The Water Jug Problem</h2>
+            <p>A classic problem: You have a 4-gallon jug and a 3-gallon jug. Neither has any measuring markers on it. There is a pump that can be used to fill the jugs with water. How can you get exactly 2 gallons of water into the 4-gallon jug?</p>
+            
+            <div class="viz-container">
+                <h3>Water Jug Solver Animation</h3>
+                <p>Watch the AI solve the problem step-by-step.</p>
+                <div class="controls">
+                    <button id="btn-solve-jug">Solve (BFS)</button>
+                    <button id="btn-reset-jug">Reset</button>
+                </div>
+                <canvas id="jug-canvas" width="600" height="300"></canvas>
+                <div id="jug-log" class="log-panel">Log output...</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>D. Uniform Cost Search (UCS)</h2>
+            <p>An extension of BFS that accounts for step costs. Expands nodes in order of increasing path cost from the start.</p>
+            <ul>
+                <li><strong>Complete:</strong> Yes (with positive step costs).</li>
+                <li><strong>Optimal:</strong> Yes (guaranteed shortest path by cost).</li>
+                <li><strong>Complexity:</strong> High memory usage.</li>
+                <li><em>Use When:</em> Step costs vary (e.g., airline routes with different distances/prices).</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>E. Bidirectional Search (BDS)</h2>
+            <p>Run two searches simultaneously: one from the start and one from the goal. Stop when they meet in the middle.</p>
+            <ul>
+                <li><strong>Complete & Optimal:</strong> Yes (with BFS).</li>
+                <li><strong>Complexity:</strong> Much faster than unidirectional search.</li>
+                <li><strong>Constraint:</strong> Goal state must be explicitly known in advance.</li>
+                <li><em>Example:</em> Finding common ancestors in a family tree.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>F. Informed Search (Heuristic Search)</h2>
+            <p>These algorithms use a <strong>Heuristic Function $h(n)$</strong> to estimate the cost to the goal. This domain knowledge guides the search toward the goal more efficiently.</p>
+
+            <h3>1. Greedy Best-First Search</h3>
+            <p>Always expands the node with the lowest $h(n)$ (estimated distance to goal).</p>
+            <ul>
+                <li><strong>Complete:</strong> No (can get stuck in loops).</li>
+                <li><strong>Optimal:</strong> No.</li>
+                <li><strong>Advantage:</strong> Fast in practice.</li>
+                <li><em>Example:</em> Straight-line distance as heuristic for route planning.</li>
+            </ul>
+
+            <h3>2. A* Search</h3>
+            <p>The most popular algorithm. It minimizes $f(n) = g(n) + h(n)$, balancing actual cost and estimated cost.</p>
+            <ul>
+                <li>$g(n)$: Actual cost from start to node $n$.</li>
+                <li>$h(n)$: Estimated cost from $n$ to goal (heuristic).</li>
+                <li>$f(n)$: Estimated total cost via node $n$.</li>
+                <li><strong>Complete & Optimal:</strong> Yes (if $h$ is admissible).</li>
+                <li><em>Example:</em> GPS navigation (Euclidean distance as heuristic).</li>
+            </ul>
+
+            <h3>3. Hill Climbing</h3>
+            <p>An iterative algorithm that starts with an arbitrary solution and attempts to find a better solution by making incremental changes. Like climbing a hill in fog.</p>
+            <ul>
+                <li><strong>Simple Hill Climbing:</strong> Check one neighbor at a time.</li>
+                <li><strong>Steepest-Ascent:</strong> Check all neighbors, pick the best one.</li>
+                <li><strong>Stochastic:</strong> Randomly pick a neighbor with probability proportional to its value.</li>
+            </ul>
+
+            <h3>Problems with Hill Climbing:</h3>
+            <ul>
+                <li><strong>Local Maximum:</strong> Stuck at a peak that's not the global best. Solution: Backtrack or random restart.</li>
+                <li><strong>Plateau:</strong> All neighbors have the same value. Solution: Make a large jump.</li>
+                <li><strong>Ridge:</strong> A narrow peak where moving in single directions goes downhill. Solution: Move in multiple directions simultaneously.</li>
+            </ul>
+
+            <h3>4. Generate and Test</h3>
+            <p>Brute-force heuristic search: Generate possible solutions and test if they meet criteria.</p>
+            <ul>
+                <li><strong>Completeness:</strong> Yes (if search space is finite).</li>
+                <li><strong>Efficiency:</strong> Poor (tries all possibilities).</li>
+                <li><em>Example:</em> Exhaustive search for a password.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>G. Comparison Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Complete</th>
+                        <th>Optimal</th>
+                        <th>Time</th>
+                        <th>Space</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BFS</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>O(b^d)</td>
+                        <td>O(b^d)</td>
+                    </tr>
+                    <tr>
+                        <td>DFS</td>
+                        <td>✓*</td>
+                        <td>✗</td>
+                        <td>O(b^m)</td>
+                        <td>O(bm)</td>
+                    </tr>
+                    <tr>
+                        <td>UCS</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>O(b^(1+⌊C*/ε⌋))</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>A*</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>Depends on h</td>
+                        <td>High</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Notes:</strong> b = branching factor, d = depth, m = max depth, * = finite state space only</p>
+        </section>
+    </main>
+
+    <script src="../js/bfs_dfs.js"></script>
+    <script src="../js/jug_problem.js"></script>
+</body>
+</html>

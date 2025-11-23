@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge & Logic - AI Learning Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        .example-box {
+            background-color: #f0f8ff;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .step-by-step {
+            background-color: #fffacd;
+            border-left: 4px solid #ffd700;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background-color: #ffe6e6;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .formula {
+            background-color: #f5f5f5;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background-color: #34495e;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight-key {
+            background-color: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .resolution-step {
+            background-color: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <h1>3. Knowledge Representation and Logic</h1>
+            <p style="font-size: 14px; color: #666;">Comprehensive guide to KR fundamentals, predicate logic, and resolution proofs</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- SECTION A: KR FUNDAMENTALS -->
+        <section class="content-section">
+            <h2>A. Knowledge Representation Fundamentals</h2>
+            <p>Knowledge Representation (KR) is the art of expressing information about the world in a form that a computer system can understand and reason with.</p>
+            
+            <h3>Definition</h3>
+            <p>KR is concerned with three key aspects:</p>
+            <ul>
+                <li><strong>Facts:</strong> Truths about the world (e.g., "Socrates is a man", "All men are mortal").</li>
+                <li><strong>Representations:</strong> Symbolic forms stored in the computer (e.g., logical formulas, rules, frames).</li>
+                <li><strong>Reasoning:</strong> Using the representation to derive new knowledge and solve problems.</li>
+            </ul>
+
+            <h3>Key Requirements for KR Systems</h3>
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Representational Adequacy</strong></td>
+                        <td>Can represent all kinds of knowledge needed for the domain</td>
+                        <td>Represent facts about properties, relationships, exceptions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inferential Adequacy</strong></td>
+                        <td>Can derive new facts from stored knowledge</td>
+                        <td>If "All birds fly" and "Tweety is a bird", derive "Tweety flies"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inferential Efficiency</strong></td>
+                        <td>Inference process is computationally efficient</td>
+                        <td>Use good indexing, avoid exhaustive search</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acquisitional Efficiency</strong></td>
+                        <td>Easy to add new knowledge to the system</td>
+                        <td>Simple syntax for representing rules and facts</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>The KR Cycle: Mappings</h3>
+            <p>Knowledge moves between the real world and internal computer representation:</p>
+            <div class="formula">
+                Real World Facts ↔ Internal Representation ↔ Reasoning Engine
+            </div>
+            <ul>
+                <li><strong>Forward Mapping:</strong> Real-world facts → Internal representation (How do we express what we know?)</li>
+                <li><strong>Backward Mapping:</strong> Internal representation → Conclusions (What can we infer from what we know?)</li>
+            </ul>
+
+            <div class="example-box">
+                <strong>Example - The Socrates Problem:</strong>
+                <ul>
+                    <li><strong>Fact 1:</strong> All humans are mortal</li>
+                    <li><strong>Fact 2:</strong> Socrates is human</li>
+                    <li><strong>Forward Mapping:</strong> Human(x) → Mortal(x); Human(Socrates)</li>
+                    <li><strong>Backward Mapping (Reasoning):</strong> Therefore, Mortal(Socrates) = TRUE</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION B: PROPOSITIONAL LOGIC -->
+        <section class="content-section">
+            <h2>B. Propositional Logic</h2>
+            <h3>Basics</h3>
+            <p>Propositional logic deals with simple propositions that are either <span class="highlight-key">True</span> or <span class="highlight-key">False</span>.</p>
+
+            <h3>Propositions and Atomic Formulas</h3>
+            <ul>
+                <li><strong>Proposition:</strong> A declarative statement with a truth value</li>
+                <li><strong>Atomic Formula:</strong> A single proposition (e.g., "It is raining", "The sky is blue")</li>
+                <li><strong>Compound Formula:</strong> Combinations of atomic formulas using logical operators</li>
+            </ul>
+
+            <h3>Logical Operators</h3>
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Truth Condition</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AND</td>
+                        <td>∧</td>
+                        <td>Conjunction</td>
+                        <td>True only if both operands are true</td>
+                        <td>P ∧ Q = "It's raining AND it's cold"</td>
+                    </tr>
+                    <tr>
+                        <td>OR</td>
+                        <td>∨</td>
+                        <td>Disjunction</td>
+                        <td>True if at least one operand is true</td>
+                        <td>P ∨ Q = "It's raining OR it's snowing"</td>
+                    </tr>
+                    <tr>
+                        <td>NOT</td>
+                        <td>¬</td>
+                        <td>Negation</td>
+                        <td>Reverses truth value</td>
+                        <td>¬P = "It is NOT raining"</td>
+                    </tr>
+                    <tr>
+                        <td>IMPLIES</td>
+                        <td>→</td>
+                        <td>Implication</td>
+                        <td>False only when antecedent is true and consequent is false</td>
+                        <td>P → Q = "If it's raining, then the ground is wet"</td>
+                    </tr>
+                    <tr>
+                        <td>IFF</td>
+                        <td>↔</td>
+                        <td>Biconditional</td>
+                        <td>True when both have same truth value</td>
+                        <td>P ↔ Q = "It's raining IFF the ground is wet"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Limitations of Propositional Logic</h3>
+            <ul>
+                <li>Cannot express relationships between objects</li>
+                <li>Cannot represent universal statements like "All humans are mortal"</li>
+                <li>Leads to knowledge explosion (need separate propositions for each fact)</li>
+            </ul>
+        </section>
+
+        <!-- SECTION C: PREDICATE LOGIC -->
+        <section class="content-section">
+            <h2>C. Predicate Logic (First-Order Logic) - DETAILED GUIDE</h2>
+            <p><strong>This is the most important logic for AI!</strong> More expressive than propositional logic. Used for all reasoning in AI systems.</p>
+
+            <h3>1. Components of Predicate Logic</h3>
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Constants</strong></td>
+                        <td>Specific objects in the world (capitalized)</td>
+                        <td>Socrates, John, Paris, Apple</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Variables</strong></td>
+                        <td>Placeholders for objects (lowercase)</td>
+                        <td>x, y, z, person, city</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Predicates</strong></td>
+                        <td>Properties or relations between objects (capitalized)</td>
+                        <td>Human(x), Mortal(x), Loves(x, y)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Functions</strong></td>
+                        <td>Map objects to other objects</td>
+                        <td>Father(John), Age(x), Color(ball)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quantifiers</strong></td>
+                        <td>Express how many objects satisfy a property</td>
+                        <td>∀x (for all x), ∃x (there exists x)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logical Connectives</strong></td>
+                        <td>Combine predicates and formulas</td>
+                        <td>∧ (and), ∨ (or), ¬ (not), → (implies)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. Quantifiers - The Most Important Concept</h3>
+
+            <h4>Universal Quantifier (∀) - "For All"</h4>
+            <div class="step-by-step">
+                <strong>Definition:</strong> ∀x P(x) means "For every object x in the domain, P(x) is true"
+                <br/><br/>
+                <strong>Read as:</strong> "For all x, P of x"
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>∀x (Human(x) → Mortal(x)) = "All humans are mortal"</li>
+                    <li>∀x (Bird(x) → CanFly(x)) = "All birds can fly"</li>
+                    <li>∀x ∀y (Parent(x, y) → Older(x, y)) = "For all x and y, if x is parent of y, then x is older than y"</li>
+                </ul>
+            </div>
+
+            <h4>Existential Quantifier (∃) - "There Exists"</h4>
+            <div class="step-by-step">
+                <strong>Definition:</strong> ∃x P(x) means "There is at least one object x in the domain where P(x) is true"
+                <br/><br/>
+                <strong>Read as:</strong> "There exists an x such that P of x"
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>∃x (Student(x) ∧ Smart(x)) = "There exists a student who is smart"</li>
+                    <li>∃x (Bird(x) ∧ ¬CanFly(x)) = "There exists a bird that cannot fly (penguin)"</li>
+                    <li>∃x ∃y (Loves(x, y)) = "Someone loves someone"</li>
+                </ul>
+            </div>
+
+            <h3>3. Converting English to Predicate Logic - STEP BY STEP</h3>
+            <p>This is the critical skill for solving predicate logic questions!</p>
+
+            <h4>Rule 1: Simple Facts (Subject Has Property)</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "[Subject] is/are [property]"
+                <br/><strong>Conversion:</strong> Predicate(subject)
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"Socrates is human" → Human(Socrates)</li>
+                    <li>"John is tall" → Tall(John)</li>
+                    <li>"Rose is a flower" → Flower(Rose)</li>
+                    <li>"Mars is a planet" → Planet(Mars)</li>
+                </ul>
+            </div>
+
+            <h4>Rule 2: Relations (Two or More Objects)</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "[Subject] [relation] [object]"
+                <br/><strong>Conversion:</strong> Predicate(subject, object)
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"John loves Mary" → Loves(John, Mary)</li>
+                    <li>"Paris is the capital of France" → CapitalOf(Paris, France)</li>
+                    <li>"X is greater than Y" → GreaterThan(X, Y)</li>
+                    <li>"Alice is the mother of Bob" → Mother(Alice, Bob)</li>
+                    <li>"Book A is on Table B" → On(BookA, TableB)</li>
+                </ul>
+            </div>
+
+            <h4>Rule 3: Universal Statements (All/Every)</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "All/Every [X] are/is [Y]"
+                <br/><strong>Conversion:</strong> ∀x (X(x) → Y(x))
+                <br/><br/>
+                <strong>Why use →?</strong> Because we're saying "IF something is an X, THEN it is Y"
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"All humans are mortal" → ∀x (Human(x) → Mortal(x))</li>
+                    <li>"Every student must study" → ∀x (Student(x) → MustStudy(x))</li>
+                    <li>"All dogs are animals" → ∀x (Dog(x) → Animal(x))</li>
+                    <li>"All roses are flowers" → ∀x (Rose(x) → Flower(x))</li>
+                </ul>
+            </div>
+
+            <h4>Rule 4: Existential Statements (Some/There Exists)</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "Some [X] are [Y]" or "There exists an [X] that is [Y]"
+                <br/><strong>Conversion:</strong> ∃x (X(x) ∧ Y(x))
+                <br/><br/>
+                <strong>Why use ∧?</strong> Because we're saying "There is something that is BOTH X AND Y"
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"Some birds cannot fly" → ∃x (Bird(x) ∧ ¬CanFly(x))</li>
+                    <li>"There exists a student who is brilliant" → ∃x (Student(x) ∧ Brilliant(x))</li>
+                    <li>"Some flowers are red" → ∃x (Flower(x) ∧ Red(x))</li>
+                    <li>"There is a book that is interesting" → ∃x (Book(x) ∧ Interesting(x))</li>
+                </ul>
+            </div>
+
+            <h4>Rule 5: Compound Statements with Multiple Predicates</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "[Subject] is [A] and [B]"
+                <br/><strong>Conversion:</strong> Use conjunction (∧) to combine predicates
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"John is tall and smart" → Tall(John) ∧ Smart(John)</li>
+                    <li>"A student who studies hard and scores well" → ∃x (Student(x) ∧ StudiesHard(x) ∧ ScoresWell(x))</li>
+                    <li>"Alice is a teacher and is kind" → Teacher(Alice) ∧ Kind(Alice)</li>
+                </ul>
+            </div>
+
+            <h4>Rule 6: Conditional Statements with Quantifiers</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "If [condition], then [conclusion]" or "[A] implies [B]"
+                <br/><strong>Conversion:</strong> ∀x (Condition(x) → Conclusion(x))
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"If a person is a doctor, then they study medicine" → ∀x (Doctor(x) → StudyMedicine(x))</li>
+                    <li>"If it rains, then the ground is wet" → Rain → Wet(Ground) [Note: These are facts, not predicates over objects]</li>
+                    <li>"If a student studies hard, they will pass" → ∀x (Student(x) ∧ StudiesHard(x) → Pass(x))</li>
+                </ul>
+            </div>
+
+            <h4>Rule 7: Negation (Not, None, No)</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "[Subject] is not [property]" or "No [X] are [Y]"
+                <br/><strong>Conversion:</strong> ¬Property(subject) or ∀x (X(x) → ¬Y(x))
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"John is not tall" → ¬Tall(John)</li>
+                    <li>"Birds that cannot fly" → ∃x (Bird(x) ∧ ¬CanFly(x))</li>
+                    <li>"No humans are immortal" → ∀x (Human(x) → ¬Immortal(x))</li>
+                    <li>"There is no student who failed" → ¬∃x (Student(x) ∧ Failed(x)) [equivalent to: ∀x (Student(x) → ¬Failed(x))]</li>
+                </ul>
+            </div>
+
+            <h4>Rule 8: "Only", "If and Only If"</h4>
+            <div class="step-by-step">
+                <strong>Pattern:</strong> "Only [X] are [Y]" means "If [Y], then [X]"
+                <br/><strong>Conversion:</strong> ∀x (Y(x) → X(x))
+                <br/><br/>
+                <strong>Examples:</strong>
+                <ul>
+                    <li>"Only birds have wings" → ∀x (HasWings(x) → Bird(x))</li>
+                    <li>"Only students can vote" → ∀x (CanVote(x) → Student(x))</li>
+                    <li>"Humans are smart if and only if they study" → ∀x (Smart(x) ↔ Study(x))</li>
+                </ul>
+            </div>
+
+            <h3>4. COMPLETE WORKED EXAMPLE: Converting a Story</h3>
+            <div class="example-box">
+                <strong>📖 Story:</strong>
+                <p>"John is a student. All students must study. Every student who studies hard will pass the exam. John studies hard. Therefore, John will pass."</p>
+                <br/>
+                <strong>Step-by-Step Conversion:</strong>
+                <ol>
+                    <li>"John is a student" → <span class="highlight-key">Student(John)</span></li>
+                    <li>"All students must study" → <span class="highlight-key">∀x (Student(x) → Study(x))</span></li>
+                    <li>"Every student who studies hard will pass" → <span class="highlight-key">∀x (Student(x) ∧ StudiesHard(x) → Pass(x))</span></li>
+                    <li>"John studies hard" → <span class="highlight-key">StudiesHard(John)</span></li>
+                    <li>"Therefore, John will pass" → <span class="highlight-key">Pass(John)</span> (GOAL to PROVE)</li>
+                </ol>
+                <br/>
+                <strong>Knowledge Base:</strong>
+                <pre>
+1. Student(John)
+2. ∀x (Student(x) → Study(x))
+3. ∀x (Student(x) ∧ StudiesHard(x) → Pass(x))
+4. StudiesHard(John)
+Goal: Prove Pass(John)
+                </pre>
+            </div>
+
+            <h3>5. COMMON MISTAKES - LEARN FROM THESE!</h3>
+
+            <div class="warning-box">
+                <strong>❌ MISTAKE 1: Using ∧ instead of → for universal statements</strong>
+                <br/>
+                <strong>WRONG:</strong> "All dogs are animals" → ∀x (Dog(x) ∧ Animal(x))
+                <br/>
+                <strong>RIGHT:</strong> "All dogs are animals" → ∀x (Dog(x) → Animal(x))
+                <br/>
+                <strong>WHY?</strong> The wrong version says "everything is BOTH a dog AND an animal" (clearly false). The right version says "IF something is a dog, THEN it's an animal" (correct).
+            </div>
+
+            <div class="warning-box">
+                <strong>❌ MISTAKE 2: Using ∨ instead of ∧ for existential statements</strong>
+                <br/>
+                <strong>WRONG:</strong> "Some students are smart" → ∃x (Student(x) ∨ Smart(x))
+                <br/>
+                <strong>RIGHT:</strong> "Some students are smart" → ∃x (Student(x) ∧ Smart(x))
+                <br/>
+                <strong>WHY?</strong> The wrong version is ALWAYS true (either something is a student OR it's smart - one of these will always be true). The right version correctly says "there exists something that is BOTH a student AND smart".
+            </div>
+
+            <div class="warning-box">
+                <strong>❌ MISTAKE 3: Wrong quantifier for negation</strong>
+                <br/>
+                <strong>WRONG:</strong> "No humans are immortal" → ∃x (Human(x) ∧ ¬Immortal(x))
+                <br/>
+                <strong>RIGHT:</strong> "No humans are immortal" → ∀x (Human(x) → ¬Immortal(x))
+                <br/>
+                <strong>WHY?</strong> The wrong version says "there EXISTS a human who is not immortal" (true but not what we meant). The right version says "ALL humans are not immortal" (correct).
+            </div>
+
+            <div class="warning-box">
+                <strong>❌ MISTAKE 4: Confusing "only" with "all"</strong>
+                <br/>
+                <strong>STATEMENT:</strong> "Only birds can fly"
+                <br/>
+                <strong>WRONG:</strong> ∀x (Bird(x) → CanFly(x)) [This means "All birds can fly"]
+                <br/>
+                <strong>RIGHT:</strong> ∀x (CanFly(x) → Bird(x)) [This means "If something can fly, then it's a bird"]
+                <br/>
+                <strong>WHY?</strong> "Only birds can fly" means you must be a bird to fly (the condition for flying is being a bird).
+            </div>
+        </section>
+
+        <!-- SECTION D: INFERENCE -->
+        <section class="content-section">
+            <h2>D. Inference Rules and Reasoning Methods</h2>
+
+            <h3>1. Forward Chaining (Bottom-Up Reasoning)</h3>
+            <p><strong>Data-Driven.</strong> Start with known facts, apply rules to infer new facts until goal is reached.</p>
+            <ul>
+                <li><strong>Process:</strong> Match facts → Apply rule → Add new facts → Repeat until goal found</li>
+                <li><strong>Direction:</strong> Facts → Conclusions</li>
+                <li><strong>When to use:</strong> Planning, monitoring, control, diagnosis tasks</li>
+                <li><strong>Advantage:</strong> Natural for deriving all possible conclusions; good when many facts are available</li>
+                <li><strong>Disadvantage:</strong> Can generate many irrelevant conclusions (untargeted)</li>
+            </ul>
+
+            <h3>2. Backward Chaining (Top-Down Reasoning)</h3>
+            <p><strong>Goal-Driven.</strong> Start with the goal, look for rules that conclude it, and verify premises.</p>
+            <ul>
+                <li><strong>Process:</strong> Goal → Find rules → Verify premises → Sub-goals → Repeat</li>
+                <li><strong>Direction:</strong> Goal → Facts</li>
+                <li><strong>When to use:</strong> Diagnosis, debugging, explanation tasks, when goal is known</li>
+                <li><strong>Advantage:</strong> Focused on goal; avoids irrelevant deductions (targeted)</li>
+                <li><strong>Disadvantage:</strong> Can miss alternative solutions; slower if many rules exist</li>
+            </ul>
+
+            <h3>3. Comparison Table</h3>
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Forward Chaining</th>
+                        <th>Backward Chaining</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Direction</strong></td>
+                        <td>Bottom-Up (Facts → Goal)</td>
+                        <td>Top-Down (Goal → Facts)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search Strategy</strong></td>
+                        <td>Breadth-First</td>
+                        <td>Depth-First</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Focus</strong></td>
+                        <td>Derives ALL possible conclusions</td>
+                        <td>Focuses only on relevant rules</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best For</strong></td>
+                        <td>Planning, Monitoring, Control</td>
+                        <td>Diagnosis, Debugging, Q&A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Efficiency</strong></td>
+                        <td>Many irrelevant conclusions</td>
+                        <td>More efficient (targeted)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Example Domain</strong></td>
+                        <td>Business rules, production systems</td>
+                        <td>Expert systems, troubleshooting</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION E: RESOLUTION -->
+        <section class="content-section">
+            <h2>E. Resolution in Predicate Logic - COMPLETE GUIDE</h2>
+            <p>Resolution is a powerful <strong>proof method by REFUTATION</strong> (Proof by Contradiction). This is the foundation of logic programming (Prolog) and automated reasoning.</p>
+
+            <h3>1. What is Resolution? Why Use It?</h3>
+            <ul>
+                <li><strong>Purpose:</strong> Automatically prove theorems by contradiction</li>
+                <li><strong>Method:</strong> Assume the negation of what you want to prove, and show it leads to contradiction (empty clause)</li>
+                <li><strong>Advantage:</strong> Completely automated, works for any predicate logic formula</li>
+                <li><strong>Used by:</strong> Prolog, automated theorem provers, SAT solvers</li>
+            </ul>
+
+            <h3>2. Prerequisites: Converting to Conjunctive Normal Form (CNF)</h3>
+            <p>Before applying resolution, convert all formulas to CNF.</p>
+
+            <h4>What is CNF?</h4>
+            <ul>
+                <li>A formula in CNF is: (clause1) ∧ (clause2) ∧ (clause3) ∧ ...</li>
+                <li>Each clause is a disjunction: (literal1) ∨ (literal2) ∨ (literal3) ∨ ...</li>
+                <li>Each literal is an atom or negated atom</li>
+            </ul>
+
+            <h4>Steps to Convert to CNF</h4>
+            <div class="step-by-step">
+                <strong>Step 1:</strong> Eliminate biconditional (↔)
+                <br/>Replace: A ↔ B with (A → B) ∧ (B → A)
+                <br/><br/>
+                <strong>Step 2:</strong> Eliminate implication (→)
+                <br/>Replace: A → B with ¬A ∨ B
+                <br/><br/>
+                <strong>Step 3:</strong> Move negation inward (De Morgan's Laws)
+                <br/>Replace: ¬(A ∧ B) with ¬A ∨ ¬B
+                <br/>Replace: ¬(A ∨ B) with ¬A ∧ ¬B
+                <br/><br/>
+                <strong>Step 4:</strong> Remove double negation
+                <br/>Replace: ¬¬A with A
+                <br/><br/>
+                <strong>Step 5:</strong> Distribute ∨ over ∧
+                <br/>Replace: A ∨ (B ∧ C) with (A ∨ B) ∧ (A ∨ C)
+                <br/><br/>
+                <strong>Step 6:</strong> Standardize variables (rename to avoid conflicts)
+                <br/><br/>
+                <strong>Step 7:</strong> Eliminate existential quantifiers (Skolemization)
+                <br/>Replace: ∃x P(x) with P(f(y₁, y₂, ...)) where f is a new function and y's are free variables
+            </div>
+
+            <h3>3. The Resolution Algorithm - STEP BY STEP</h3>
+
+            <div class="step-by-step">
+                <strong>STEP 1:</strong> Convert all statements (premises and negated goal) to CNF
+                <br/><br/>
+                <strong>STEP 2:</strong> Place each clause on a line in a list
+                <br/><br/>
+                <strong>STEP 3:</strong> Find two clauses that contain complementary literals
+                <br/>Example: Clause A contains P(x) and Clause B contains ¬P(x)
+                <br/><br/>
+                <strong>STEP 4:</strong> Apply resolution rule:
+                <pre>
+If Clause1 = (P(x) ∨ Rest1)
+And Clause2 = (¬P(x) ∨ Rest2)
+Then Resolvent = (Rest1 ∨ Rest2)
+                </pre>
+                <br/>
+                <strong>STEP 5:</strong> Add the resolvent to the clause list
+                <br/><br/>
+                <strong>STEP 6:</strong> Repeat steps 3-5 until either:
+                <br/>✓ The empty clause (NIL) is derived → PROOF SUCCESSFUL
+                <br/>✗ No more resolutions possible → CANNOT PROVE
+            </div>
+
+            <h3>4. WORKED EXAMPLE: The Socrates Problem</h3>
+
+            <div class="example-box">
+                <strong>🎯 Problem:</strong> Prove that "Socrates is mortal"
+                <br/><br/>
+                <strong>Given Facts:</strong>
+                <ul>
+                    <li>Fact 1: All humans are mortal → ∀x (Human(x) → Mortal(x))</li>
+                    <li>Fact 2: Socrates is human → Human(Socrates)</li>
+                    <li>Goal: Prove that Mortal(Socrates) is TRUE</li>
+                </ul>
+            </div>
+
+            <h4>STEP 1: Convert to CNF</h4>
+            <div class="resolution-step">
+                <strong>Fact 1:</strong> ∀x (Human(x) → Mortal(x))
+                <br/>Remove ∀: Human(x) → Mortal(x)
+                <br/>Eliminate →: ¬Human(x) ∨ Mortal(x)
+                <br/>
+                <strong>CNF Clause 1:</strong> ¬Human(x) ∨ Mortal(x)
+                <br/><br/>
+                <strong>Fact 2:</strong> Human(Socrates)
+                <br/>
+                <strong>CNF Clause 2:</strong> Human(Socrates)
+                <br/><br/>
+                <strong>Negated Goal:</strong> ¬Mortal(Socrates)
+                <br/>
+                <strong>CNF Clause 3:</strong> ¬Mortal(Socrates)
+            </div>
+
+            <h4>STEP 2-5: Apply Resolution</h4>
+            <div class="resolution-step">
+                <strong>Resolution Step 1:</strong>
+                <br/>Clause 1: ¬Human(x) ∨ Mortal(x)
+                <br/>Clause 2: Human(Socrates)
+                <br/>
+                <br/>Unify: x = Socrates in Clause 1
+                <br/>Clause 1 becomes: ¬Human(Socrates) ∨ Mortal(Socrates)
+                <br/>
+                <br/>Resolve (¬Human(Socrates) with Human(Socrates)):
+                <br/><span class="highlight-key">Resolvent 4: Mortal(Socrates)</span>
+                <br/><br/>
+                <strong>Resolution Step 2:</strong>
+                <br/>Clause 4: Mortal(Socrates)
+                <br/>Clause 3: ¬Mortal(Socrates)
+                <br/>
+                <br/>Resolve (Mortal(Socrates) with ¬Mortal(Socrates)):
+                <br/><span class="highlight-key">Resolvent 5: NIL (Empty Clause) ✓</span>
+                <br/><br/>
+                <strong>✓ PROOF COMPLETE!</strong> We derived the empty clause, so Mortal(Socrates) is TRUE.
+            </div>
+
+            <h3>5. How to Create a Resolution Graph/Tree</h3>
+
+            <h4>Visual Representation</h4>
+            <pre>
+Legend:
+- Rectangles = Original clauses
+- Diamonds = Resolved clauses
+- Draw line from parent clauses to resolved clause showing the unified variable
+
+                    ¬Human(x) ∨ Mortal(x)    Human(Socrates)
+                           ↓                         ↓
+                           └─────── Resolve ────────┘
+                                      ↓
+                           Mortal(Socrates)
+                                      ↓
+                         ¬Mortal(Socrates)
+                                      ↓
+                           └─ Resolve ─┘
+                                      ↓
+                                    NIL ✓
+
+Legend for the graph:
+- Top level: Original clauses from the knowledge base
+- Middle level: Resolved clauses
+- Bottom: Final resolution (NIL = proof found)
+            </pre>
+
+            <h3>6. COMPLEX WORKED EXAMPLE: Multi-variable Problem</h3>
+
+            <div class="example-box">
+                <strong>🎯 Problem:</strong>
+                <br/>Given:
+                <ul>
+                    <li>Fact 1: All dogs are animals → ∀x (Dog(x) → Animal(x))</li>
+                    <li>Fact 2: All animals need food → ∀x (Animal(x) → NeedsFood(x))</li>
+                    <li>Fact 3: Fido is a dog → Dog(Fido)</li>
+                </ul>
+                Prove: NeedsFood(Fido)
+            </div>
+
+            <h4>Conversion to CNF</h4>
+            <div class="resolution-step">
+                Clause 1: ¬Dog(x) ∨ Animal(x)
+                <br/>Clause 2: ¬Animal(y) ∨ NeedsFood(y)
+                <br/>Clause 3: Dog(Fido)
+                <br/>Clause 4: ¬NeedsFood(Fido) [Negated goal]
+            </div>
+
+            <h4>Resolution Process</h4>
+            <div class="resolution-step">
+                Step 1: Resolve Clause 1 and 3
+                <br/>¬Dog(x) ∨ Animal(x) + Dog(Fido)
+                <br/>Unify x = Fido → Clause 5: Animal(Fido)
+                <br/><br/>
+                Step 2: Resolve Clause 2 and 5
+                <br/>¬Animal(y) ∨ NeedsFood(y) + Animal(Fido)
+                <br/>Unify y = Fido → Clause 6: NeedsFood(Fido)
+                <br/><br/>
+                Step 3: Resolve Clause 4 and 6
+                <br/>¬NeedsFood(Fido) + NeedsFood(Fido)
+                <br/><strong>→ NIL ✓ PROOF COMPLETE!</strong>
+            </div>
+
+            <h3>7. Types of Reasoning</h3>
+            <ul>
+                <li><strong>Deductive:</strong> Premises guarantee conclusion (e.g., "All birds fly, Tweety is a bird → Tweety flies")</li>
+                <li><strong>Inductive:</strong> Examples suggest conclusion but don't guarantee it (e.g., "Most birds fly" → infer new bird flies)</li>
+                <li><strong>Abductive:</strong> Best explanation given observations (e.g., "Wet ground" → probably rained)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Learning Hub. Comprehensive Knowledge Representation and Logic Guide.</p>
+    </footer>
+</body>
+</html>

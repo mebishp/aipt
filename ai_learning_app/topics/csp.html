@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSP - AI Learning Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <h1>7. Constraint Satisfaction Problems (CSP)</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>A. Definition</h2>
+            <p>A CSP consists of:</p>
+            <ul>
+                <li><strong>Variables:</strong> $X = \{X_1, \dots, X_n\}$</li>
+                <li><strong>Domains:</strong> $D = \{D_1, \dots, D_n\}$ (Possible values for variables)</li>
+                <li><strong>Constraints:</strong> $C$ (Rules limiting values)</li>
+            </ul>
+            <p><strong>Goal:</strong> Assign a value to every variable such that all constraints are satisfied.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>B. Examples</h2>
+            <ul>
+                <li><strong>Map Coloring:</strong> Color a map so no two adjacent regions have the same color.</li>
+                <li><strong>N-Queens:</strong> Place N queens on an NxN board so none attack each other.</li>
+                <li><strong>Sudoku:</strong> Fill grid so every row, column, and box has digits 1-9.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>C. Backtracking Search</h2>
+            <p>The primary method for solving CSPs.</p>
+            <p>It is a Depth-First Search that assigns values to variables one by one.</p>
+            <ol>
+                <li>Select an unassigned variable.</li>
+                <li>Try a value from its domain.</li>
+                <li>Check constraints. If valid, move to next variable.</li>
+                <li>If invalid, try next value.</li>
+                <li>If no values work, <strong>Backtrack</strong> to previous variable.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Learning Hub</p>
+    </footer>
+</body>
+</html>

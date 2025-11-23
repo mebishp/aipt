@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview of AI - AI Learning Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <h1>1. Overview of Artificial Intelligence</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>A. Definition and Goals</h2>
+            <p>Artificial Intelligence (AI) is the <strong>simulation of human intelligence processes by machines</strong>. It aims to create systems that can function autonomously.</p>
+            
+            <h3>Key Goals</h3>
+            <ul>
+                <li><strong>Learning:</strong> Acquiring information and rules for using it.</li>
+                <li><strong>Reasoning:</strong> Using rules to reach approximate or definite conclusions.</li>
+                <li><strong>Problem Solving:</strong> Identifying solutions to complex issues.</li>
+                <li><strong>Perception:</strong> Interpreting sensory data (e.g., vision, speech).</li>
+            </ul>
+
+            <h3>Why do we need AI?</h3>
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <h4>Reduce Errors</h4>
+                    <p>Machines don't get tired or distracted.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>24x7 Availability</h4>
+                    <p>AI agents can work continuously without breaks.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Unbiased Decisions</h4>
+                    <p>AI follows logic, reducing emotional bias.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>B. Types of AI Systems</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Narrow AI (Weak)</strong></td>
+                        <td>Designed for a specific task.</td>
+                        <td>Siri, Alexa, Netflix Recommendations.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>General AI (Strong)</strong></td>
+                        <td>Can perform any intellectual task a human can.</td>
+                        <td>Theoretical (Sci-Fi robots).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Superintelligence</strong></td>
+                        <td>Surpasses human intelligence in all aspects.</td>
+                        <td>Speculative.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="content-section">
+            <h2>C. Intelligent Agents</h2>
+            <p>An <strong>agent</strong> is anything that can be viewed as perceiving its environment through <strong>sensors</strong> and acting upon that environment through <strong>actuators</strong>.</p>
+            
+            <h3>The PEAS Framework</h3>
+            <p>To design a rational agent, we must define its task environment:</p>
+            <ul>
+                <li><strong>P</strong>erformance Measure: How do we define success?</li>
+                <li><strong>E</strong>nvironment: Where does the agent operate?</li>
+                <li><strong>A</strong>ctuators: How does it affect the world?</li>
+                <li><strong>S</strong>ensors: How does it perceive the world?</li>
+            </ul>
+
+            <div class="viz-container">
+                <h4>Example: Autonomous Taxi</h4>
+                <p><strong>Performance:</strong> Safety, speed, comfort, profit.</p>
+                <p><strong>Environment:</strong> Roads, traffic, pedestrians.</p>
+                <p><strong>Actuators:</strong> Steering, accelerator, brake.</p>
+                <p><strong>Sensors:</strong> Cameras, GPS, speedometer.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>D. Types of Environments</h2>
+            <p>The environment determines the design of the agent.</p>
+            <ul>
+                <li><strong>Fully vs. Partially Observable:</strong> Can the agent see the whole state? (Chess vs. Poker)</li>
+                <li><strong>Deterministic vs. Stochastic:</strong> Is the next state completely determined by the current state and action? (Puzzle vs. Driving)</li>
+                <li><strong>Static vs. Dynamic:</strong> Does the world change while the agent is thinking? (Crossword vs. Taxi)</li>
+                <li><strong>Discrete vs. Continuous:</strong> Are there limited states? (Chess vs. Driving)</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>E. Agent Types by Complexity</h2>
+            <h3>1. Simple Reflex Agent</h3>
+            <p>The most basic agent. Works on condition-action rules directly.</p>
+            <ul>
+                <li>Perceives environment → Applies rule → Performs action.</li>
+                <li><strong>Limitation:</strong> Only works in fully observable environments.</li>
+                <li><em>Example:</em> A vacuum cleaner that cleans whenever dirt is detected.</li>
+            </ul>
+
+            <h3>2. Model-Based Reflex Agent</h3>
+            <p>Maintains an internal model of the world to handle partial observability.</p>
+            <ul>
+                <li>Keeps track of past percepts (internal state).</li>
+                <li>Uses a model: "How does the world change?"</li>
+                <li><em>Example:</em> A robot that remembers where walls are even when not currently visible.</li>
+            </ul>
+
+            <h3>3. Goal-Based Agent</h3>
+            <p>Extends model-based agent by having explicit goals.</p>
+            <ul>
+                <li>Searches for a sequence of actions to achieve the goal.</li>
+                <li>Enables planning and lookahead.</li>
+                <li><em>Example:</em> GPS navigation (goal: reach destination).</li>
+            </ul>
+
+            <h3>4. Utility-Based Agent</h3>
+            <p>Similar to goal-based but measures success on a continuous scale.</p>
+            <ul>
+                <li>Uses a <strong>Utility Function</strong> to rank states by preference.</li>
+                <li>Selects actions that maximize expected utility.</li>
+                <li><em>Example:</em> A taxi that optimizes for speed, comfort, AND profit.</li>
+            </ul>
+
+            <h3>5. Learning Agent</h3>
+            <p>Can improve its performance over time through experience.</p>
+            <ul>
+                <li><strong>Learning Element:</strong> Modifies the agent's behavior based on feedback.</li>
+                <li><strong>Performance Element:</strong> Selects external actions.</li>
+                <li><strong>Critic:</strong> Provides feedback against a standard.</li>
+                <li><em>Example:</em> Machine learning models that improve with training data.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>F. Behavioral Characteristics</h2>
+            <p>Intelligent agents typically exhibit these properties:</p>
+            <ul>
+                <li><strong>Reactivity:</strong> Quick response to environment changes.</li>
+                <li><strong>Proactiveness:</strong> Taking initiative to achieve goals (not just reacting).</li>
+                <li><strong>Autonomy:</strong> Operating independently without constant human control.</li>
+                <li><strong>Adaptability:</strong> Learning and improving from experience.</li>
+                <li><strong>Goal-Oriented Behavior:</strong> Actions directed at specific objectives.</li>
+                <li><strong>Persistence:</strong> Continuing despite obstacles or failures.</li>
+                <li><strong>Efficiency:</strong> Achieving goals with minimal resource usage.</li>
+                <li><strong>Collaboration:</strong> Working with other agents or humans.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>G. Applications of AI Agents</h2>
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <h4>Robotics</h4>
+                    <p>Autonomous robots for manufacturing, exploration, and assistance.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Gaming</h4>
+                    <p>AI opponents in video games (chess engines, game bots).</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Virtual Assistants</h4>
+                    <p>Siri, Alexa, Google Assistant—perceive voice and act on commands.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Autonomous Vehicles</h4>
+                    <p>Self-driving cars that perceive the road and navigate safely.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Learning Hub</p>
+    </footer>
+</body>
+</html>

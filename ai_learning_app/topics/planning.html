@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning - AI Learning Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+            <h1>5. Planning</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section">
+            <h2>A. What is Planning?</h2>
+            <p>Planning is finding a sequence of actions (a plan) to achieve a goal. Unlike simple search, planning uses structured representations of states and actions.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>B. Components</h2>
+            <ul>
+                <li><strong>Initial State:</strong> Description of the world at start.</li>
+                <li><strong>Goal State:</strong> Description of the world we want.</li>
+                <li><strong>Operators (Actions):</strong>
+                    <ul>
+                        <li><strong>Preconditions:</strong> What must be true to do the action.</li>
+                        <li><strong>Effects:</strong> What changes after the action (Add List / Delete List).</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>C. STRIPS (Goal Stack Planning)</h2>
+            <p><strong>ST</strong>anford <strong>R</strong>esearch <strong>I</strong>nstitute <strong>P</strong>roblem <strong>S</strong>olver.</p>
+            <p>Uses a stack to manage goals. It works backwards from the goal.</p>
+            <ol>
+                <li>Push Goal to Stack.</li>
+                <li>If top is unsatisfied goal, push operator that satisfies it.</li>
+                <li>If top is operator, check preconditions. If met, execute (update state). If not, push preconditions as new goals.</li>
+            </ol>
+            <p><strong>Limitation:</strong> Linear planning. Can struggle with interacting subgoals (Sussman Anomaly).</p>
+        </section>
+
+        <section class="content-section">
+            <h2>D. Non-Linear Planning (TWEAK)</h2>
+            <p>Handles subgoals that interfere with each other. It uses <strong>Constraint Posting</strong>.</p>
+            <p>Instead of a strict sequence, it builds a partial ordering of steps and adds constraints (e.g., "Step A must come before Step B") to resolve conflicts.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Learning Hub</p>
+    </footer>
+</body>
+</html>
